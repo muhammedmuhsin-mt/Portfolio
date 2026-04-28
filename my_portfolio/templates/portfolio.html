@@ -1,0 +1,126 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammed Muhsin | Portfolio</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Port<span>Folio</span></div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#skills">Skills</a>
+            <a href="#my-projects">Projects</a>
+            <a href="#contact" class="nav-btn">Hire Me</a>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="status-badge"><span class="dot"></span> Available for Projects</span>
+                <h1 class="hero-title">Muhammed <span class="gradient-text">Muhsin</span></h1>
+                <p class="hero-subtitle">Django Developer & Web Designer based in Malappuram, Kerala.</p>
+                <div class="hero-btns">
+                    <a href="{% url 'login' %}" class="btn-primary">Add Projects</a>
+                </div>
+            </div>
+
+            <div class="hero-photo-wrapper">
+                <div class="photo-border">
+                    <img src="profilo.jpg" alt="Muhammed Muhsin" class="profile-img">
+                </div>
+                <div class="floating-badge badge-python"><i class="fab fa-python"></i> Python</div>
+                <div class="floating-badge badge-django">Django</div>
+            </div>
+        </div>
+
+    </section>
+<section id="projects-section">
+   <h2>My Projects</h2>
+   
+   {% for p in projects %}
+<div class="card">
+    {% if p.imge %}
+        <img src="{{ p.imge.url }}" alt="{{ p.title }}">
+    {% else %}
+        <p>No Image Uploaded</p> 
+    {% endif %}
+    <h3>{{ p.title }}</h3>
+</div>
+{% endfor %}
+</section>
+    <section id="about" class="about-section">
+    <div class="about-container">
+        <div class="about-text">
+            <h2 class="section-title-left">About <span>Me</span></h2>
+            <p>I am a passionate <strong>Web Developer</strong> from Malappuram, Kerala. I love building clean and efficient web applications. My journey started with a curiosity for how websites work, which led me to dive deep into Python and Django.</p>
+            <p>Currently, I am focusing on creating high-quality e-commerce platforms and retail solutions. I believe in writing clean code and providing a great user experience.</p>
+            
+            <div class="about-info">
+                <div class="info-item"><strong>Location:</strong> Malappuram, Kerala</div>
+                <div class="info-item"><strong>Education:</strong> Django Specialist (Learning)</div>
+                <div class="info-item"><strong>Interests:</strong> E-commerce, AI Visualization</div>
+            </div>
+        </div>
+        <div class="about-stats">
+            <div class="stat-box">
+                <h3>100%</h3>
+                <p>Dedication</p>
+            </div>
+            <div class="stat-box">
+                <h3>Clean</h3>
+                <p>Code focus</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section id="skills" class="skills-section">
+        <h2 class="section-title">My Skills</h2>
+        <div class="skills-container">
+            <div class="skill-card python">
+                <div class="skill-icon"><i class="fab fa-python"></i></div>
+                <h3>Backend</h3>
+                <p>Python & Django</p>
+            </div>
+            <div class="skill-card html">
+                <div class="skill-icon"><i class="fab fa-html5"></i></div>
+                <h3>Frontend</h3>
+                <p>HTML5 & Modern CSS</p>
+            </div>
+            <div class="skill-card js">
+                <div class="skill-icon"><i class="fab fa-js"></i></div>
+                <h3>JavaScript</h3>
+                <p>Interactive UI</p>
+            </div>
+            <div class="skill-card db">
+                <div class="skill-icon"><i class="fas fa-database"></i></div>
+                <h3>Database</h3>
+                <p>SQLite & Data Management</p>
+            </div>
+             <div class="skill-card db">
+                <div class="skill-icon"><i class="fas fa-bootstrap"></i></div>
+                <h3>Bootstrap</h3>
+                <p>Responsive Web Site</p>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h2>Let's build something together!</h2>
+        <div class="socials">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/muhammed-muhsin-2a3b07404" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:muhsin@example.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p class="locat"><i class="fas fa-map-marker-alt"></i> Malappuram, Kerala</p>
+    </footer>
+
+</body>
+</html>
