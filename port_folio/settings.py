@@ -76,8 +76,16 @@ WSGI_APPLICATION = 'port_folio.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'portfolio',         # The name of your MySQL database
+        'USER': 'root',  # Your MySQL username
+        'PASSWORD': 'root',    # Your MySQL password
+        'HOST': 'localhost',            # Server address (e.g., '127.0.0.1')
+        'PORT': '3306',                 # Default MySQL port
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            'charset': 'utf8mb4',       # Support for emojis and full UTF-8
+        },
     }
 }
 
@@ -118,7 +126,5 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
-import os
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+LOGIN_URL = "/login/"
 STATIC_ROOT = BASE_DIR / 'staticfiles'

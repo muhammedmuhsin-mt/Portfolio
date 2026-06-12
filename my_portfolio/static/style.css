@@ -10,18 +10,18 @@
     margin: 0; padding: 0; box-sizing: border-box;
     font-family: 'Inter', -apple-system, sans-serif;
 }
-
 body {
     background-color: var(--bg);
     color: var(--text);
-    scroll-behavior: smooth;
-    overflow-x: hidden;
 }
+
+
 
 /* Navbar */
 nav {
     display: flex; justify-content: space-between; align-items: center;
     padding: 30px 10%;
+    
 }
 
 .logo { font-size: 1.5rem; font-weight: 800; }
@@ -68,11 +68,12 @@ nav {
 /* "Chest Out" Pongi Nilkkunna Button */
 .btn-primary {
     background: var(--gradient); color: white;
-    padding: 18px 40px; text-decoration: none;
+    padding: 21px 40px; text-decoration: none;
     border-radius: 12px; font-weight: 700;
     display: inline-block;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     box-shadow: 0 10px 20px rgba(0, 112, 243, 0.2);
+    font-size: 18px;
 }
 
 .btn-primary:hover {
@@ -81,18 +82,34 @@ nav {
 }
 
 /* Photo Wrapper */
-.hero-photo-wrapper { position: relative; flex: 1; display: flex; justify-content: center; }
+/* OVAL BACKGROUND (main part) */
+.hero-image{
+    padding-right: 40px;
+     width: 500px; /* ഫോട്ടോയുടെ വലുപ്പം കൂട്ടാൻ (നിങ്ങളുടെ ഇഷ്ടത്തിനനുസരിച്ച് കൂട്ടാം/കുറയ്ക്കാം) */
+    height: auto;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: visible; /* ഫോട്ടോ മുറിഞ്ഞു പോകാതിരിക്കാൻ */
+    /* ഫോട്ടോ സൈഡിൽ നിന്ന് കുറച്ച് ഇടത്തോട്ട് നീക്കി കൊണ്ടുവരാൻ താഴെയുള്ള വരി സഹായിക്കും */
+   
 
-.photo-border {
-    width: 350px; height: 350px;
-    background: var(--gradient); padding: 6px;
-    animation: morphing 8s infinite alternate;
 }
 
-.profile-img {
-    width: 100%; height: 100%; object-fit: cover;
-    border-radius: inherit; border: 4px solid var(--bg);
+.ovel-bg img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+     
+    
+    /* ഫോട്ടോ കട്ട് ആയ ഭാഗം മറയ്ക്കാൻ ആവശ്യമെങ്കിൽ ഒരു ചെറിയ ഷാഡോ നൽകാം */
+    filter: drop-shadow(-5px 5px 15px rgba(0,0,0,0.5)); 
 }
+
 
 .floating-badge {
     position: absolute; background: rgba(255, 255, 255, 0.1);
@@ -107,7 +124,7 @@ nav {
 /* Skills Section */
 .skills-section { 
     padding: 100px 10%; text-align: center;
-    background-color: #222;    
+        
 }
 .section-title { font-size: 2.5rem; margin-bottom: 50px; }
 
@@ -117,29 +134,35 @@ nav {
 }
 
 .skill-card {
-    background: #111; padding: 40px 20px; border-radius: 24px;
+     padding: 40px 20px; border-radius: 24px;
     border: 1px solid #222; transition: 0.4s;
+    transition: 0.3s;
+    
 }
 
 .skill-card:hover {
     transform: translateY(-15px); border-color: var(--accent);
     background: rgba(255, 255, 255, 0.05);
+    
 }
 
 .skill-icon { font-size: 3rem; color: var(--accent); margin-bottom: 15px; }
 
 /* Footer */
-footer { padding: 80px 10%; text-align: center; background: #080808; margin-top: 50px; }
+footer { padding: 80px 10%; text-align: center;  margin-top: 50px; }
 .socials a { color: var(--gray); font-size: 1.8rem; margin: 0 15px; transition: 0.3s; }
 .socials a:hover { color: var(--accent); }
 .locat { margin-top: 20px; color: #555; font-size: 0.9rem; }
 
 /* Animations */
 @keyframes morphing {
-    0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-    100% { border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%; }
+    0% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+    100% {
+        border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%;
+    }
 }
-
 @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-20px); }
@@ -155,7 +178,7 @@ footer { padding: 80px 10%; text-align: center; background: #080808; margin-top:
 /* About Section Styles */
 .about-section {
     padding: 100px 10%;
-    background: #080808;
+    
 }
 
 .about-container {
@@ -194,7 +217,7 @@ footer { padding: 80px 10%; text-align: center; background: #080808; margin-top:
 
 .info-item {
     background: rgba(255, 255, 255, 0.03);
-    padding: 15px;
+    padding: 25px;
     border-radius: 10px;
     font-size: 0.9rem;
     border-left: 3px solid var(--accent);
@@ -294,31 +317,80 @@ footer { padding: 80px 10%; text-align: center; background: #080808; margin-top:
     font-size: 14px;
 }
 /* Projects Section Styling */
-#projects-section {
-    padding: 60px 20px;
-    background-color: #111; /* Dark background */
-    text-align: center;
+#projects-section{
+    padding:80px 10%;
 }
 
-#projects-section h2 {
-    font-size: 2.5rem;
-    color: #fff;
-    margin-bottom: 40px;
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.section-title h2{
+    font-size:36px;
+    margin-bottom:10px;
+}
+
+.section-title p{
+    color:#777;
+}
+
+.project-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+}
+
+.project-card{
+    
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.project-card:hover{
+    transform:translateY(-8px);
+}
+
+.project-card h3{
+    margin-bottom:15px;
+}
+
+.project-card p{
+    color:#666;
+    line-height:1.6;
+    margin-bottom:20px;
+}
+
+.project-btn{
+    display:inline-block;
+    text-decoration:none;
+    background:#007bff;
+    color:white;
+    padding:10px 20px;
+    border-radius:8px;
+    transition:0.3s;
+}
+
+.project-btn:hover{
+    opacity:0.9;
 }
 
 /* Projects Grid Container */
-.projects-grid {
+/*.projects-grid {
     display: flex;         /* Card-ukale sid-by-sid aakkunnu */
-    flex-wrap: wrap;       /* Space illenkil thazhethe row-ilekku pokum */
-    justify-content: center; /* Center-il neat aayi vekkan */
-    gap: 20px;            /* Card-ukal thammil ulla akalam */
-    padding: 20px;
+ /*   flex-wrap: wrap;       /* Space illenkil thazhethe row-ilekku pokum */
+  /*   justify-content: center; /* Center-il neat aayi vekkan */
+  /*   justify-content: center; /* Center-il neat aayi vekkan */
+  /*   gap: 20px;            /* Card-ukal thammil ulla akalam */
+  /*   padding: 20px;
 }
 
 /* Oro Card-inteyum design */
-.card {
+ /*.card {
     width: 300px;         /* Ellaa card-inum ore veethi */
-    background: #222;
+    /* /* background: #222;
     padding: 15px;
     border-radius: 10px;
     text-align: center;
@@ -326,10 +398,25 @@ footer { padding: 80px 10%; text-align: center; background: #080808; margin-top:
 }
 
 /* Image neat aayi irikkan */
-.card img {
+ /*.card img {
     width: 100%;
     height: 200px;
     object-fit: cover;    /* Photo neat aayi box-il fit aakan */
-    border-radius: 8px;
+  /*   border-radius: 8px;
     margin-bottom: 10px;
+}*/
+
+
+#typing{
+    color:#00bfff;
+    font-weight:600;
+    font-size: xx-large;
 }
+.top-btn{
+    display:inline-block;
+    margin-top:20px;
+    font-size:20px;
+    color:white;
+    text-decoration:none;
+}
+

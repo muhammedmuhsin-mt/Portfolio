@@ -25,37 +25,126 @@
         <div class="hero-container">
             <div class="hero-content">
                 <span class="status-badge"><span class="dot"></span> Available for Projects</span>
-                <h1 class="hero-title">Muhammed <span class="gradient-text">Muhsin</span></h1>
-                <p class="hero-subtitle">Django Developer & Web Designer based in Malappuram, Kerala.</p>
-                <div class="hero-btns">
-                    <a href="{% url 'login' %}" class="btn-primary">Add Projects</a>
-                </div>
-            </div>
+                 <h1 class="hero-title">
+                Muhammed <span class="gradient-text">Muhsin</span>
+            </h1>
 
-            <div class="hero-photo-wrapper">
-                <div class="photo-border">
-                    <img src="{% static 'img/profilo.jpg'}" alt="Muhammed Muhsin" class="profile-img">
+            <p class="hero-subtitle">
+                I'm a <span id="typing"></span>
+            </p>
+                <div class="hero-btns">
+{% if user.is_authenticated %}
+    <a href="{% url 'addproject' %}" class="btn-primary">
+        Add Project
+    </a>
+{% else %}
+    <a href="{% url 'login' %}?next={% url 'addproject' %}" class="btn-primary">
+        Login to Add Project
+    </a>
+{% endif %}   <a href="{% static 'resume/Muhsin_Resume.pdf' %}"class="btn-primary"download>Download Resume</a>
                 </div>
-                <div class="floating-badge badge-python"><i class="fab fa-python"></i> Python</div>
-                <div class="floating-badge badge-django">Django</div>
             </div>
-        </div>
+  <div class="hero-image">
+      <div class="oval-bg">
+        <img src="{% static 'img/img12345678.jpeg' %}" alt="profile">
+      </div>
+    </div>
 
     </section>
 <section id="projects-section">
-   <h2>My Projects</h2>
-   
-   {% for p in projects %}
-<div class="card">
-    {% if p.imge %}
-        <img src="{{ p.imge.url }}" alt="{{ p.title }}">
-    {% else %}
-        <p>No Image Uploaded</p> 
-    {% endif %}
-    <h3>{{ p.title }}</h3>
-</div>
-{% endfor %}
+    <div class="section-title">
+        <h2>My Projects</h2>
+        <p>Some of the projects I have built using Django, Python and Web Technologies.</p>
+    </div>
+
+    <div class="project-container">
+
+        <div class="project-card">
+            <h3>E-Commerce Website</h3>
+            <p>Full-featured e-commerce website built with Django, Bootstrap and MySQL.</p>
+
+            <a href="https://github.com/muhammedmuhsin-mt/Ecommerce-orginal"
+               target="_blank"
+               class="project-btn">
+                View Project
+            </a>
+        </div>
+
+        <div class="project-card">
+            <h3>Portfolio Website</h3>
+            <p>Personal portfolio website created using HTML, CSS and JavaScript.</p>
+
+            <a href="https://github.com/muhammedmuhsin-mt/Portfolio"
+               target="_blank"
+               class="project-btn">
+                View Project
+            </a>
+        </div>
+
+        <!-- NEW PROJECT -->
+        <div class="project-card">
+            <h3>Todo List App</h3>
+            <p>Simple task management app to add, edit and delete daily tasks.</p>
+
+            <a href="https://github.com/muhammedmuhsin-mt/todo-list"
+               target="_blank"
+               class="project-btn">
+                View Project
+            </a>
+        </div>
+
+        <!-- NEW PROJECT -->
+        <div class="project-card">
+            <h3>School Management System</h3>
+            <p>Web system to manage students, teachers, attendance and reports.</p>
+
+            <a href="https://github.com/muhammedmuhsin-mt/school-management"
+               target="_blank"
+               class="project-btn">
+                View Project
+            </a>
+        </div>
+
+        <!-- NEW PROJECT -->
+        <div class="project-card">
+            <h3>Student Management System</h3>
+            <p>System to manage student records, marks and basic CRUD operations.</p>
+
+            <a href="https://github.com/muhammedmuhsin-mt/student-system"
+               target="_blank"
+               class="project-btn">
+                View Project
+            </a>
+        </div>
+
+    </div>
 </section>
+
+
+<section id="projects-section">
+
+    <div class="project-container">
+
+        {% for project in projects %}
+        <div class="project-card">
+
+            <h3>{{ project.title }}</h3>
+
+            <p>{{ project.description }}</p>
+
+            <a href="{{ project.github_link }}"
+               target="_blank"
+               class="project-btn">
+                View Project
+            </a>
+
+        </div>
+        {% endfor %}
+
+    </div>
+</section>
+
+
     <section id="about" class="about-section">
     <div class="about-container">
         <div class="about-text">
@@ -82,45 +171,123 @@
     </div>
 </section>
 
-    <section id="skills" class="skills-section">
-        <h2 class="section-title">My Skills</h2>
-        <div class="skills-container">
-            <div class="skill-card python">
-                <div class="skill-icon"><i class="fab fa-python"></i></div>
-                <h3>Backend</h3>
-                <p>Python & Django</p>
-            </div>
-            <div class="skill-card html">
-                <div class="skill-icon"><i class="fab fa-html5"></i></div>
-                <h3>Frontend</h3>
-                <p>HTML5 & Modern CSS</p>
-            </div>
-            <div class="skill-card js">
-                <div class="skill-icon"><i class="fab fa-js"></i></div>
-                <h3>JavaScript</h3>
-                <p>Interactive UI</p>
-            </div>
-            <div class="skill-card db">
-                <div class="skill-icon"><i class="fas fa-database"></i></div>
-                <h3>Database</h3>
-                <p>SQLite & Data Management</p>
-            </div>
-             <div class="skill-card db">
-                <div class="skill-icon"><i class="fas fa-bootstrap"></i></div>
-                <h3>Bootstrap</h3>
-                <p>Responsive Web Site</p>
-        </div>
-    </section>
+   <section id="skills" class="skills-section">
+    <h2 class="section-title">My Skills</h2>
 
-    <footer id="contact">
-        <h2>Let's build something together!</h2>
-        <div class="socials">
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/muhammed-muhsin-2a3b07404" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:muhsin@example.com"><i class="fas fa-envelope"></i></a>
+    <div class="skills-container">
+
+        <div class="skill-card python">
+            <div class="skill-icon"><i class="fab fa-python"></i></div>
+            <h3>Backend</h3>
+            <p>Python & Django</p>
         </div>
-        <p class="locat"><i class="fas fa-map-marker-alt"></i> Malappuram, Kerala</p>
-    </footer>
+
+        <div class="skill-card html">
+            <div class="skill-icon"><i class="fab fa-html5"></i></div>
+            <h3>Frontend</h3>
+            <p>HTML5 & Modern CSS</p>
+        </div>
+
+        <div class="skill-card js">
+            <div class="skill-icon"><i class="fab fa-js"></i></div>
+            <h3>JavaScript</h3>
+            <p>Interactive UI</p>
+        </div>
+
+        <!-- NEW: React -->
+        <div class="skill-card react">
+            <div class="skill-icon"><i class="fab fa-react"></i></div>
+            <h3>React</h3>
+            <p>Component Based UI</p>
+        </div>
+
+        <!-- NEW: Next.js -->
+        <div class="skill-card next">
+            <div class="skill-icon"><i class="fas fa-bolt"></i></div>
+            <h3>Next.js</h3>
+            <p>Full Stack React Framework</p>
+        </div>
+
+        <!-- NEW: Vite -->
+        <div class="skill-card vite">
+            <div class="skill-icon"><i class="fas fa-bolt"></i></div>
+            <h3>Vite</h3>
+            <p>Fast Frontend Build Tool</p>
+        </div>
+
+        <div class="skill-card db">
+            <div class="skill-icon"><i class="fas fa-database"></i></div>
+            <h3>Database</h3>
+            <p>SQLite & Data Management</p>
+        </div>
+
+        <div class="skill-card bootstrap">
+            <div class="skill-icon"><i class="fab fa-bootstrap"></i></div>
+            <h3>Bootstrap</h3>
+            <p>Responsive Web Site</p>
+        </div>
+
+    </div>
+</section>
+
+<footer id="contact">
+    <h2>Let's Build Something Together!</h2>
+
+    <div class="socials">
+        <a href="https://github.com/muhammedmuhsin-mt" target="_blank">
+            <i class="fab fa-github"></i>
+        </a>
+
+        <a href="https://www.linkedin.com/in/muhammed-muhsin-2a3b07404" target="_blank">
+            <i class="fab fa-linkedin"></i>
+        </a>
+
+        <a href="mailto:yourmail@gmail.com">
+            <i class="fas fa-envelope"></i>
+        </a>
+    </div>
+
+    <p class="locat">
+        <i class="fas fa-map-marker-alt"></i>
+        Malappuram, Kerala
+    </p>
+
+    <a href="#home" class="top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <p class="copyright">
+        © 2026 Muhammed Muhsin. All Rights Reserved.
+    </p>
+</footer>
+
+
+
+    <script>
+const words = [
+    "Django Developer",
+    "Python Developer",
+    "Web Developer",
+    "Frontend Developer"
+];
+
+let index = 0;
+
+function changeText(){
+    document.getElementById("typing").textContent = words[index];
+
+    index++;
+
+    if(index >= words.length){
+        index = 0;
+    }
+}
+
+changeText();
+setInterval(changeText, 2000);
+</script>
+
+
 
 </body>
 </html>

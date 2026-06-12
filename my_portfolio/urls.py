@@ -22,5 +22,5 @@ from . import views
 urlpatterns = [
      path('', views.home, name='home'),
     path('login/', views.login_page, name='login'),
-    path('addproject/',views.AddProject,name='addproject'),
+path('addproject/',views.projectadd, name='addproject'),
 ]

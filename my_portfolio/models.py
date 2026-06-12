@@ -1,10 +1,12 @@
 from django.db import models
 
 # Create your models here.
-class Project(models.Model):
-    title=models.CharField(max_length=200)
-    description=models.TextField()
-    imge=models.ImageField(upload_to='project_image/')
+from django.db import models
 
-    def __str__(self):
+class Project(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    github_link = models.URLField()
+
+    def ___str___(self):
         return self.title
